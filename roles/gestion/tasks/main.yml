@@ -1,0 +1,27 @@
+- name: Create sonarqube container
+  docker_container:
+    name: sonarqube
+    image: sonarqube
+    ports:
+      - "8085:9000"
+- name: Ajout du repo Java.
+  apt_repository:
+    repo: ppa:openjdk-r/ppa
+    state: present
+- name: Installation de Java requis pour Jenkins (OpenJDK8).
+  apt:
+    name: openjdk-8-jdk
+    update-cache: yes
+- name: Ajout de la clé Jenkins.
+  apt_key:
+    url: https://pkg.jenkins.io/debian/jenkins-ci.org.key
+    state: present
+- name: Ajout du repo Jenkins.
+  apt_repository:
+    repo: deb http://pkg.jenkins.io/debian-stable binary/
+    state: present
+    filename: Jenkins
+- name: Installation de Jenkins sur host1.
+  apt:
+    name: jenkins
+    update-cache: yes

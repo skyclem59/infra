@@ -1,0 +1,20 @@
+---
+- name: Provisionning all vm
+  hosts: all
+  become: true
+  roles:
+    - tools
+    - docker
+    - app
+ 
+- name: outils container
+  hosts: outils
+  become: true
+  roles:
+    - outils
+
+- name: gestion container
+  hosts: gestion
+  become: true
+  roles:
+    - gestion

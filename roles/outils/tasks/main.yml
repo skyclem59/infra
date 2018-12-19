@@ -1,0 +1,15 @@
+- name: Create nginx container
+  docker_container:
+    name: nginx
+    image: nginx
+    ports:
+      - "80:80"
+- name: Create nexus container
+  docker_container:
+    name: nexus
+    image: sonatype/nexus
+    ports:
+      - "8081:8081"
+- name: run the service docker-compose.yml
+  docker_service:
+    project_src: /home/formation/ansible
