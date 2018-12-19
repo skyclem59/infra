@@ -23,9 +23,6 @@
   notify:
     - start docker
 
-- name: remove pip
-  shell: sudo pip3 uninstall 
-
 - name: Installation de pip
   apt:
     state: latest
